@@ -1,6 +1,6 @@
 [build-system]
 requires      = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name        = "mssi-pipeline"
@@ -46,7 +46,7 @@ dependencies = [
     "seaborn>=0.12",
     "fpdf2>=2.7",
     "openpyxl>=3.1",
-    "streamlit>=1.30",
+    "dearpygui>=1.10",
 ]
 
 [project.optional-dependencies]
@@ -58,16 +58,17 @@ dev = [
 ]
 
 [project.scripts]
-mssi = "cli.main:main"
+mssi     = "cli.main:main"
 mssi-gui = "gui.app:main"
 
 [project.urls]
-Homepage      = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline"
-Repository    = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline.git"
-Issues        = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline/issues"
+Homepage   = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline"
+Repository = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline.git"
+Issues     = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline/issues"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where   = ["."]
+include = ["MSSI_Pipeline*", "cli*", "gui*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
