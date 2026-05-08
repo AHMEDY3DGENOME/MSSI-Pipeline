@@ -1,0 +1,73 @@
+[build-system]
+requires      = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name        = "mssi-pipeline"
+version     = "1.0.0"
+description = "Multi-HSP Stress Signature Index Pipeline for insect stress biology"
+readme      = "README.md"
+license     = {file = "LICENSE"}
+requires-python = ">=3.9"
+
+authors = [
+    {name = "Ahmed Yassin", email = "Ahmedyassin300@outlook.com"}
+]
+
+keywords = [
+    "bioinformatics",
+    "entomology",
+    "heat shock proteins",
+    "sHsp",
+    "stress index",
+    "Spodoptera frugiperda",
+    "fall armyworm",
+    "qRT-PCR",
+    "gene expression"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "matplotlib>=3.7",
+    "seaborn>=0.12",
+    "fpdf2>=2.7",
+    "openpyxl>=3.1",
+    "streamlit>=1.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "black",
+    "flake8",
+]
+
+[project.scripts]
+mssi = "cli.main:main"
+mssi-gui = "gui.app:main"
+
+[project.urls]
+Homepage      = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline"
+Repository    = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline.git"
+Issues        = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
