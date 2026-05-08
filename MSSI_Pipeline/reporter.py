@@ -5,14 +5,12 @@ from typing import Dict, List
 from fpdf import FPDF
 from .classifier import StressResult
 
-
 STRESS_COLORS_RGB = {
     "very_high": (226, 75,  74),
     "high":      (239, 159, 39),
     "moderate":  (55,  138, 221),
     "low":       (29,  158, 117),
 }
-
 
 class MSSIReporter:
 
@@ -28,7 +26,7 @@ class MSSIReporter:
         pdf.set_text_color(255, 255, 255)
         pdf.set_font("Helvetica", "B", 16)
         pdf.set_xy(10, 8)
-        pdf.cell(0, 8, "MSSI Pipeline — Stress Analysis Report", ln=True)
+        pdf.cell(0, 8, "MSSI Pipeline - Stress Analysis Report", ln=True)
         pdf.set_font("Helvetica", size=9)
         pdf.set_x(10)
         pdf.cell(0, 6, f"Generated: {self.timestamp}  |  Species: Spodoptera frugiperda")
@@ -56,7 +54,7 @@ class MSSIReporter:
             pdf.set_text_color(255, 255, 255)
             row = [
                 r.location,
-                str(r.mssi_score),
+                f"{r.mssi_score:.4f}",
                 r.stress_label,
                 f"{int(r.confidence * 100)}%"
             ]
@@ -94,6 +92,7 @@ class MSSIReporter:
         images = [
             ("mssi_bar.png",      "MSSI Score by Location"),
             ("heatmap.png",        "Gene Expression Heatmap"),
+            ("publication_heatmap.png", "Publication Quality Heatmap"),
             ("gene_profiles.png",  "Gene Profiles by Location"),
             ("confidence.png",     "Classification Confidence"),
         ]
