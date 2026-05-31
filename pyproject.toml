@@ -1,13 +1,13 @@
 [build-system]
-requires      = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name        = "mssi-pipeline"
-version     = "1.0.0"
-description = "Multi-HSP Stress Signature Index Pipeline for insect stress biology"
-readme      = "README.md"
-license     = {file = "LICENSE"}
+name = "mssi-pipeline"
+version = "1.0.0"
+description = "Multi-HSP Stress Signature Index Pipeline for Fall Armyworm stress biology"
+readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.9"
 
 authors = [
@@ -23,7 +23,8 @@ keywords = [
     "Spodoptera frugiperda",
     "fall armyworm",
     "qRT-PCR",
-    "gene expression"
+    "gene expression",
+    "insecticide resistance"
 ]
 
 classifiers = [
@@ -46,7 +47,8 @@ dependencies = [
     "seaborn>=0.12",
     "fpdf2>=2.7",
     "openpyxl>=3.1",
-    "dearpygui>=1.10",
+    "customtkinter>=5.2",
+    "pillow>=10.0",
 ]
 
 [project.optional-dependencies]
@@ -58,17 +60,25 @@ dev = [
 ]
 
 [project.scripts]
-mssi     = "cli.main:main"
-mssi-gui = "gui.app:main"
+mssi = "MSSI_Pipeline.cli:main"
 
 [project.urls]
-Homepage   = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline"
+Homepage = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline"
 Repository = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline.git"
-Issues     = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline/issues"
+Issues = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline/issues"
 
 [tool.setuptools.packages.find]
-where   = ["."]
-include = ["MSSI_Pipeline*", "cli*", "gui*"]
+where = ["."]
+include = ["MSSI_Pipeline*", "gui*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"*" = [
+    "assets/*",
+    "assets/**/*"
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
