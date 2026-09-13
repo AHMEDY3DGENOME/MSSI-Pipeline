@@ -26,16 +26,21 @@ class MSSIApp(ctk.CTk):
 
     def __init__(self):
         super().__init__()
+
         self.title("MSSI Pipeline v1.0.0")
         self.geometry("1100x800")
         self.minsize(1000, 700)
-        self.filepath    = None
-        self.output_dir  = "outputs"
-        self.results     = None
-        self.risks       = None
-        self._mapper     = None
-        self.genes       = []
+
+        self.filepath = None
+        self.output_dir = None
+
+        self.results = None
+        self.risks = None
+        self._mapper = None
+
+        self.genes = []
         self.weight_vars = {}
+
         self._build_ui()
 
     def _build_ui(self):
@@ -168,14 +173,50 @@ class MSSIApp(ctk.CTk):
 
     def _browse_file(self):
         path = filedialog.askopenfilename(
-            filetypes=[("Excel Files", "*.xlsx *.xls")])
+            title="Select qPCR Input File",
+            filetypes=[
+                ("Supported Files", "*.csv *.xlsx *.xls"),
+                ("CSV Files", "*.csv"),
+                ("Excel Files", "*.xlsx *.xls"),
+                ("All Files", "*.*"),
+            ],
+        )
+
         if not path:
             return
-        self.filepath = path
-        self.file_label.configure(text=Path(path).name, text_color="white")
-        self._log(f"File loaded: {path}")
-        self._load_genes()
 
+        # Store selected input file
+        self.filepath = path
+
+        # Create MSSI_Results beside the selected input file
+        input_path = Path(path).expanduser().resolve()
+        result_dir = input_path.parent / "MSSI_Results"
+
+        result_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        # All pipeline outputs will now use this directory
+        self.output_dir = str(result_dir)
+
+        # Update GUI
+        self.file_label.configure(
+            text=input_path.name,
+            text_color="white",
+        )
+
+        self.output_label.configure(
+            text=str(result_dir),
+            text_color="white",
+        )
+
+        # Log
+        self._log(f"File loaded: {input_path}")
+        self._log(f"Results will be saved to: {result_dir}")
+
+        # Read genes from selected input file
+        self._load_genes()
     def _browse_output(self):
         path = filedialog.askdirectory()
         if path:
