@@ -410,19 +410,19 @@ After completion, review the generated:
 
 ## Geographic Resistance Risk Mapping
 
-![Egypt Risk Map](assets/egypt_risk_map.png)
+![Egypt Risk Map](https://raw.githubusercontent.com/AHMEDY3DGENOME/MSSI-Pipeline/main/assets/egypt_risk_map.png)
 
 ## Comparative Gene Expression Heatmap
 
-![Publication Heatmap](assets/publication_heatmap.png)
+![Publication Heatmap](https://raw.githubusercontent.com/AHMEDY3DGENOME/MSSI-Pipeline/main/assets/publication_heatmap.png)
 
 ## Resistance Risk Stratification
 
-![Risk Bar](assets/risk_bar.png)
+![Risk Bar](https://raw.githubusercontent.com/AHMEDY3DGENOME/MSSI-Pipeline/main/assets/risk_bar.png)
 
 ## Interactive Decision-Support Interface
 
-![Interface](assets/interface.png)
+![Interface](https://raw.githubusercontent.com/AHMEDY3DGENOME/MSSI-Pipeline/main/assets/interface.png)
 
 # Output
 

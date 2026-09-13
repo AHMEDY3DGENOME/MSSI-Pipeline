@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mssi-pipeline"
-version = "1.0.0"
+version = "1.0.1"
 description = "Multi-HSP Stress Signature Index Pipeline for Fall Armyworm stress biology"
 readme = "README.md"
 license = "MIT"
