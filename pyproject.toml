@@ -1,17 +1,18 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
+
 
 [project]
 name = "mssi-pipeline"
 version = "1.0.0"
 description = "Multi-HSP Stress Signature Index Pipeline for Fall Armyworm stress biology"
 readme = "README.md"
-license = {file = "LICENSE"}
+license = "MIT"
 requires-python = ">=3.9"
 
 authors = [
-    {name = "Ahmed Yassin", email = "Ahmedyassin300@outlook.com"}
+    { name = "Ahmed Yassin", email = "Ahmedyassin300@outlook.com" }
 ]
 
 keywords = [
@@ -24,7 +25,9 @@ keywords = [
     "fall armyworm",
     "qRT-PCR",
     "gene expression",
-    "insecticide resistance"
+    "insecticide resistance",
+    "MSSI",
+    "geospatial analysis",
 ]
 
 classifiers = [
@@ -32,11 +35,13 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
     "License :: OSI Approved :: MIT License",
+
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+
     "Operating System :: OS Independent",
 ]
 
@@ -45,40 +50,57 @@ dependencies = [
     "numpy>=1.24",
     "matplotlib>=3.7",
     "seaborn>=0.12",
+
+    "geopandas>=0.14",
+    "shapely>=2.0",
+    "pyproj>=3.6",
+
     "fpdf2>=2.7",
     "openpyxl>=3.1",
     "customtkinter>=5.2",
     "pillow>=10.0",
 ]
 
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",
-    "pytest-cov",
-    "black",
-    "flake8",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "build>=1.0",
+    "twine>=5.0",
 ]
+
 
 [project.scripts]
 mssi = "MSSI_Pipeline.cli:main"
+
 
 [project.urls]
 Homepage = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline"
 Repository = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline.git"
 Issues = "https://github.com/AHMEDY3DGENOME/MSSI-Pipeline/issues"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["MSSI_Pipeline*", "gui*"]
 
 [tool.setuptools]
 include-package-data = true
 
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "MSSI_Pipeline*",
+    "gui*",
+]
+
+
 [tool.setuptools.package-data]
 "*" = [
     "assets/*",
-    "assets/**/*"
+    "assets/**/*",
 ]
+
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
