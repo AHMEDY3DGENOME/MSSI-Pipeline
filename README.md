@@ -243,7 +243,7 @@ If you use the MSSI Pipeline in your research, please cite:
 
 Computational Biologist | Bioinformatics Researcher | Python Developer
 
-GitHub: https://github.com/AHMEDY3DGENOME
+GitHub: https://github.com/AHMEDY3DGENOME/MSSI-Pipeline
 
 ---
 
